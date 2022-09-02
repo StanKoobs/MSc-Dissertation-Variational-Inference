@@ -5,7 +5,7 @@ nablaA <- function(theta) {
 }
 
 
-library(TeX)
+library(latex2exp)
 
 thetaseq <- seq(-2, 15, by = 0.05)
 
@@ -26,30 +26,17 @@ nablanp1 <- gamma * nablahat + (1 - gamma) * nablan
 thetap1 <- ((nablanp1 - 100) / 3)^(1 / 3)
 
 
-ThesisggTheme <- function() {
-  theme(panel.background = element_rect(fill = "grey96"),
-        axis.line = element_blank(),
-        panel.border = element_rect(colour = "gray82", fill = NA,
-                                    size = 1.5),
-        panel.grid.major = element_line(colour = "grey70", 
-                                        linetype = "dashed"),
-        panel.grid.minor = element_line(colour = "grey70", 
-                                        linetype = "dashed"),
-        axis.text.x = element_text(size= 13),
-        axis.text.y = element_text(size= 13),
-        axis.title.x = element_text(size = 15),
-        axis.title.y = element_text(size = 15),
-        axis.ticks = element_line(size = 1.5),
-        axis.ticks.length = unit(1.5, "mm")
-  )
-}
-
 ggplot() +
   geom_line(aes(x = thetaseq, y = nablaseq), size = 1.5, colour = "#F8766D") +
+  geom_segment(aes(x = thetan, y = nablan, xend = thetan + 0.42746, 
+                   yend = nablanp1), size = 1.5, color = "#00BFC4") +
+  geom_segment(aes(x = thetahat, y = nablahat, xend = thetan + 0.42746, 
+                   yend = nablanp1), size = 1.5, color = "#00BFC4") +
   geom_point(aes(x = thetan, y = nablan), size = 4) +
   geom_point(aes(x = theta, y = nablareal), size = 4) +
   geom_point(aes(x = thetahat, y = nablahat), size = 4) +
   geom_point(aes(x = thetap1, y = nablanp1), size = 4) +
+  geom_point(aes(x = thetan + 0.427, y = nablanp1), size = 4) +
   geom_segment(aes(x = thetan, y = 0, xend = theta, yend = 0), 
                size = 1, linetype = "dashed") +
   geom_segment(aes(x = thetan, y = nablan, xend = thetan, yend = 0), 
@@ -83,6 +70,8 @@ ggplot() +
   annotate("text", x = 5.5, y = 80, label = TeX("$\\alpha$"), size = 8) +
   annotate("text", x = 7.8, y = 2000, label = TeX("$\\nabla A$"), size = 12,
            colour = "#F8766D") +
+  annotate("text", x = 4.8, y = 960, label = TeX("$\\nabla \\tilde{A}$"), 
+           size = 11, colour = "#00BFC4") +
   ylim(-100, 2500) +
   xlim(0.5, 10) +
   theme_void() +
