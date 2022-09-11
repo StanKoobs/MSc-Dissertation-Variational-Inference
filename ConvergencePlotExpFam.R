@@ -1,7 +1,7 @@
 ### Convergence plot exponential family
 
 nablaA <- function(theta) {
-   3 * theta^3 + 100
+  3 * theta^3 + 100
 }
 
 
@@ -41,7 +41,7 @@ ggplot() +
                size = 1, linetype = "dashed") +
   geom_segment(aes(x = thetan, y = nablan, xend = thetan, yend = 0), 
                size = 1, linetype = "dashed") +
-  geom_segment(aes(x = theta, y = nablareal, xend = theta,, yend = 0), 
+  geom_segment(aes(x = theta, y = nablareal, xend = theta, yend = 0), 
                size = 1, linetype = "dashed") +
   geom_segment(aes(x = thetahat, y = nablahat, xend = thetahat, yend = 0), 
                size = 1, linetype = "dashed") +
@@ -72,6 +72,7 @@ ggplot() +
            colour = "#F8766D") +
   annotate("text", x = 4.8, y = 960, label = TeX("$\\nabla \\tilde{A}$"), 
            size = 11, colour = "#00BFC4") +
+  annotate("text", x = 3, y = 200, label = TeX("$\\mathcal{D}$")) +
   ylim(-100, 2500) +
   xlim(0.5, 10) +
   theme_void() +
@@ -82,5 +83,4 @@ ggplot() +
         axis.title.x = element_blank(),
         axis.title.y = element_blank() 
   )
-
 

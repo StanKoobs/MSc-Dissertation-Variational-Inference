@@ -24,16 +24,16 @@ strongconvexx <- strongconvex(x)
 
 ggplot() +
   geom_line(aes(x = x, smoothx, colour = "Smoothness bound"), size = 0.8) +
-  geom_line(aes(x = x, fx, colour = "f"), size = 0.8) +
+  geom_line(aes(x = x, fx, colour = "g"), size = 0.8) +
   geom_line(aes(x = x, strongconvexx, colour = "Strong convexity bound"), 
             size = 0.8) +
   geom_point(aes(x = 0, y = 0), size = 2, colour = "black") +
   ylim(-4, 7) +
   xlim(-2, 4) +
-  annotate("text", x = -0.22, y = -0.2, label = "f(x)", size = 8) +
+  annotate("text", x = -0.33, y = -0.27, label = TeX("$g(\\theta)$"), size = 8) +
   scale_color_manual(name = "Legend", 
                      values = c("Smoothness bound" = "#F8766D",
-                                "f" = "#7CAE00",
+                                "g" = "#7CAE00",
                                 "Strong convexity bound" = "#00BFC4")) +
   theme_void() +
   theme(legend.title = element_blank(),
